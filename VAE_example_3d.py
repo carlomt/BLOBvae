@@ -20,7 +20,7 @@ K.set_image_data_format('channels_last')
 
 #parameters
 #batch_size = 16
-batch_size = 4
+batch_size = 2
 encoder_dim = 32
 latent_dim = 2  # Dimensionality of the latent space (a cube)
 img_shape = (128,128,128,2)#(128, 128, 128, 3) # shape of the input images (MNIST 25x25 pixels x 1 (gray scale))
@@ -157,6 +157,7 @@ for i in range(0,nTrainingSet+nTestSet):
     else:
         x_test[i-nTrainingSet,:,:,:,0] = x
         x_test[i-nTrainingSet,:,:,:,1] = p
+inputfile.Close()
 
 # x_train = np.random.randint(255, size=(32, 28,28,28,2))
 # x_test = np.random.randint(255, size=(32, 28,28,28,2))
@@ -175,6 +176,8 @@ vae.fit(x=x_train, y=None,
 
 vae.save_weights("weights", overwrite=True)
 decoder.save_weights("decoder_weights", overwrite=True)
+
+
 
 # Generate images
 import matplotlib.pyplot as plt
