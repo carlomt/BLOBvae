@@ -57,6 +57,10 @@ for i in range(0,nTrainingSet+nTestSet):
     else:
         x_test[i-nTrainingSet,:,:,:,0] = x
         x_test[i-nTrainingSet,:,:,:,1] = p
+
+np.save("x_test.npy",x_test)
+np.save("x_training.npy",x_training)        
+
 inputfile.Close()
 
 
